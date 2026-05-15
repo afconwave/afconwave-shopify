@@ -27,8 +27,8 @@ Create a `.env` file:
 ```env
 PORT=3005
 AFCONWAVE_API_URL=https://api.afconwave.com/v1
-AFCONWAVE_SECRET_KEY=sk_live_your_key_here
-AFCONWAVE_WEBHOOK_SECRET=whsec_your_webhook_secret_here
+AFCONWAVE_SECRET_KEY=afw_sk_live_your_key_here
+AFCONWAVE_WEBHOOK_SECRET=afw_wh_live_your_webhook_secret_here
 SHOPIFY_STORE_DOMAIN=yourstore.myshopify.com
 SHOPIFY_ADMIN_API_TOKEN=shpat_your_admin_token
 APP_URL=https://your-deployed-app-url.com
@@ -60,7 +60,9 @@ Note your deployment URL (e.g., `https://afconwave-shopify.up.railway.app`).
 In your AfconWave merchant dashboard:
 1. Go to Settings → Webhooks.
 2. Add a new webhook URL: `https://your-app-url.com/payment/resolve`
-3. Subscribe to events: `PAYMENT_SUCCESS`, `PAYMENT_FAILED`.
+3. Subscribe to events: `payment.success`, `payment.failed`.
+
+**Note:** This middleware automatically handles **Replay Protection** by verifying the webhook timestamp against a 5-minute tolerance window.
 
 ## Local Development
 ```bash
